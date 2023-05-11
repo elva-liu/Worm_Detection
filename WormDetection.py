@@ -3,13 +3,15 @@ import cv2
 
 # How to capture data from webcam on Windows
 #cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
-#num_frames_to_record = 100
-#fps_for_vid_output = 2
 
 # How to capture data from video file
 cap = cv2.VideoCapture("CFL3.mp4") # Capture from file
-num_frames_to_record = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) # record all frames from video
-fps_for_vid_output = int(cap.get(cv2.CAP_PROP_FPS)) # match output fps to input video fps
+
+num_frames_to_record = 100
+#num_frames_to_record = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) # record all frames from video (if using file)
+
+fps_for_vid_output = 2
+#fps_for_vid_output = int(cap.get(cv2.CAP_PROP_FPS)) # match output fps to input video fps (if using file)
 
 # Make sure the camera is available
 assert cap.isOpened()
@@ -58,7 +60,7 @@ while num_frames_to_record > 0:
       
       cv2.rectangle(frame, start_point, end_point, red_colour, thickness)
 
-    #cv2.imshow('Worm Detection', frame)
+    cv2.imshow('Worm Detection', frame)
 
     # waitKey() is needed otherwise imshow() does not work correctly
     cv2.waitKey(5)    
